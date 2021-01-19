@@ -79,7 +79,7 @@ const Table = ({
 
               {Object.keys(item).map((column, i) => (
                 <td key={i} data-column={headers[i]}>
-                  {console.log("Here's what inside:", i)}
+                  {console.log("Here's what inside i:", i)}
 
                   {console.log("Here's what inside column:", column)}
                   {item[headers[i].id]}
