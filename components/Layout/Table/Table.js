@@ -7,10 +7,6 @@ import {
   MenuItem,
   MenuButton,
   IconButton,
-  Button,
-  Stack,
-  Heading,
-  Select,
 } from "@chakra-ui/react";
 
 import "./Table.module.scss";
@@ -63,10 +59,13 @@ const Table = ({
           </tr>
         </thead>
         <tbody>
-          {items.map((item, i) => (
-            <tr key={i}>
+          {items.map((item, headerId) => (
+            <tr key={headerId}>
               {selectable ? (
                 <td data-column="global-selector">
+                  {console.log("I'm trying to log headerId")}
+                  {console.log(headerId)}
+                  {console.log(item.id)}
                   <Checkbox
                     defaultIsChecked={selected.includes(item.id)}
                     isChecked={localSelected.includes(item.id)}
@@ -77,11 +76,18 @@ const Table = ({
                 ""
               )}
 
-              {Object.keys(item).map((column, c) => (
-                <td key={c} data-column={headers[c]}>
-                  {item[headers[c].id]}
+              {console.log("I'm trying to log items")}
+              {console.log(item)}
+
+              {Object.keys(item).map((column, i) => (
+                <td key={i} data-column={headers[i]}>
+                  {console.log(i)}
+                  {console.log("I'm trying to console the projectId.title")}
+                  {console.log(column)}
+                  {item[headers[i].title]}
                 </td>
               ))}
+
               <td data-column="item-actions">
                 <Menu>
                   <MenuButton
