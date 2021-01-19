@@ -32,9 +32,6 @@ const Form = ({ projectFormIsOpen, projectFormOnClose }) => {
       }),
     })
       .then((res) => res.json())
-      .then((result) => setTitle(result.title))
-      .then((result) => setStars(result.stars))
-      .then((result) => setCategory(result.category))
       .catch((err) => console.log("error"));
   };
 
