@@ -63,9 +63,8 @@ const Table = ({
             <tr key={headerId}>
               {selectable ? (
                 <td data-column="global-selector">
-                  {console.log("I'm trying to log headerId")}
-                  {console.log(headerId)}
-                  {console.log(item.id)}
+                  {console.log("Here's what inside headerId:", headerId)}
+                  {console.log("Here's what inside item.id:", item.id)}
                   <Checkbox
                     defaultIsChecked={selected.includes(item.id)}
                     isChecked={localSelected.includes(item.id)}
@@ -76,14 +75,13 @@ const Table = ({
                 ""
               )}
 
-              {console.log("I'm trying to log items")}
-              {console.log(item)}
+              {console.log("Here's what inside item:", item)}
 
               {Object.keys(item).map((column, i) => (
                 <td key={i} data-column={headers[i]}>
-                  {console.log(i)}
-                  {console.log("I'm trying to console the projectId.title")}
-                  {console.log(column)}
+                  {console.log("Here's what inside:", i)}
+
+                  {console.log("Here's what inside column:", column)}
                   {item[headers[i].id]}
                 </td>
               ))}
