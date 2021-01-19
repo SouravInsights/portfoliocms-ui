@@ -1,26 +1,11 @@
 import React from "react";
-import { Image, Heading, Text, useDisclosure } from "@chakra-ui/react";
+import { Image, Heading, Text } from "@chakra-ui/react";
 import { PageContainer, PageContent } from "../Layout";
-import Form from "../Form/Form";
 
 export default function Dashboard() {
-  const {
-    isOpen: projectFormIsOpen,
-    onOpen: projectFormOnOpen,
-    onClose: projectFormOnClose,
-  } = useDisclosure();
-
   return (
     <PageContainer isFixedNav>
-      <PageContent
-        title="Dashboard"
-        label="Add Project"
-        onClick={projectFormOnOpen}
-      >
-        <Form
-          projectFormIsOpen={projectFormIsOpen}
-          projectFormOnClose={projectFormOnClose}
-        />
+      <PageContent>
         <Image
           boxSize="260px"
           mx="auto"

@@ -1,7 +1,8 @@
 import React from "react";
-
+import { useDisclosure } from "@chakra-ui/react";
 import { PageContainer, PageContent, Table } from "../Layout";
 import useFetch from "../../hooks/useFetch";
+import Form from "../Form/Form";
 
 export default function Projects() {
   let headers = [
@@ -23,6 +24,12 @@ export default function Projects() {
     },
   ];
 
+  const {
+    isOpen: projectFormIsOpen,
+    onOpen: projectFormOnOpen,
+    onClose: projectFormOnClose,
+  } = useDisclosure();
+
   // Using the custom hook to fetch the data.
   const data = useFetch("https://arezef.deta.dev/api/projects");
   console.log(data);
@@ -30,12 +37,15 @@ export default function Projects() {
   return (
     <PageContainer isFixedNav>
       <PageContent
-        title="Projects"
-        label="Add Project"
-        onClick={() => {
-          alert("ok");
-        }}
+        buttonOn
+        title="My Projects"
+        label="Add New Project"
+        onClick={projectFormOnOpen}
       >
+        <Form
+          projectFormIsOpen={projectFormIsOpen}
+          projectFormOnClose={projectFormOnClose}
+        />
         <Table selectable selected={[2, 3]} headers={headers} items={data} />
       </PageContent>
     </PageContainer>
