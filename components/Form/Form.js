@@ -25,6 +25,9 @@ const Form = ({ projectFormIsOpen, projectFormOnClose }) => {
   const saveProject = () => {
     fetch("https://arezef.deta.dev/api/projects", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         title: title,
         stars: stars,
