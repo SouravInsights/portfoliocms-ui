@@ -22,12 +22,25 @@ const Form = ({ projectFormIsOpen, projectFormOnClose }) => {
   const [stars, setStars] = React.useState("");
   const [category, setCategory] = React.useState("");
 
-  const submit = (e) => {
-    e.preventDefault();
-
+  const saveProject = () => {
     fetch("https://arezef.deta.dev/api/projects", {
       method: "POST",
-    }).then((res) => res.json());
+      body: JSON.stringify({
+        title: title,
+        stars: stars,
+        category: category,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => setTitle(result.title))
+      .then((result) => setStars(result.stars))
+      .then((result) => setCategory(result.category))
+      .catch((err) => console.log("error"));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    saveProject(); // Save project when form is submitted
   };
 
   return (
@@ -37,7 +50,7 @@ const Form = ({ projectFormIsOpen, projectFormOnClose }) => {
         <ModalHeader>Add your Project</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <form onSubmit={submit}>
+          <form onSubmit={handleSubmit}>
             <FormControl as="fieldset">
               <Stack>
                 <FormLabel>Project Name</FormLabel>
@@ -51,7 +64,7 @@ const Form = ({ projectFormIsOpen, projectFormOnClose }) => {
                 <Textarea
                   placeholder="Project Stars"
                   value={stars}
-                  onChange={(e) => setStars(e.target.value)}
+                  onChange={(e) => setStars(parseInt(e.target.value))}
                 />
                 {console.log(stars)}
                 <FormLabel>Category</FormLabel>
@@ -68,7 +81,7 @@ const Form = ({ projectFormIsOpen, projectFormOnClose }) => {
                   backgroundColor="blue.500"
                   color="#ffffff"
                   _hover={{ bg: "blue.200" }}
-                  onClick={submit}
+                  onClick={handleSubmit}
                 >
                   Add this Project
                 </Button>
