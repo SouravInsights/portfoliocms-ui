@@ -56,11 +56,11 @@ const Table = ({
             )}
 
             {headers.map((head, i) => (
-              <th className="chakra-ui-table" key={i} data-column={head.id}>
+              <th key={i} data-column={head.id}>
                 {head.title}
               </th>
             ))}
-            <th className="chakra-ui-table" data-column="item-actions"></th>
+            <th data-column="item-actions"></th>
           </tr>
         </thead>
         <tbody>
