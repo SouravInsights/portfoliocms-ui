@@ -1,18 +1,26 @@
 import React from "react";
-import { Image, Heading, Text } from "@chakra-ui/react";
-
-import { PageContainer, PageContent, Header, Footer, Card } from "../Layout";
+import { Image, Heading, Text, useDisclosure } from "@chakra-ui/react";
+import { PageContainer, PageContent } from "../Layout";
+import Form from "../Form/Form";
 
 export default function Dashboard() {
+  const {
+    isOpen: projectFormIsOpen,
+    onOpen: projectFormOnOpen,
+    onClose: projectFormOnClose,
+  } = useDisclosure();
+
   return (
     <PageContainer isFixedNav>
       <PageContent
         title="Dashboard"
         label="Add Project"
-        onClick={() => {
-          alert("ok");
-        }}
+        onClick={projectFormOnOpen}
       >
+        <Form
+          projectFormIsOpen={projectFormIsOpen}
+          projectFormOnClose={projectFormOnClose}
+        />
         <Image
           boxSize="260px"
           mx="auto"
@@ -22,7 +30,6 @@ export default function Dashboard() {
           align="center"
           fontWeight="extrabold"
           fontSize={{ base: "2xl", sm: "2xl", md: "4xl" }}
-          lineHeight={"110%"}
         >
           Welcome to{" "}
           <Text as="span" color="main.600">
