@@ -9,7 +9,6 @@ const PageContainer = ({ isFixedNav, children }) => {
       bg="secondary.background"
       minHeight="100%"
       alignItems="center"
-      justifyContent="top"
       flexDirection="column"
       paddingTop={isFixedNav ? { md: "4rem" } : "0"}
     >

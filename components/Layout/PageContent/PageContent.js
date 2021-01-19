@@ -9,8 +9,8 @@ const PageContent = ({
   children,
 }) => {
   return (
-    <Box paddingTop="1.5rem" h="400px" w="60%">
-      <Flex alignItems="center" justify="space-between" mb="1.5rem">
+    <Box paddingTop="1.5rem">
+      <Flex justify="space-between" mb="1.5rem">
         <Heading size="lg">{title}</Heading>
         {buttonOn === true ? (
           <Button onClick={onClick} colorScheme="main" size="sm">

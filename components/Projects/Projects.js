@@ -32,6 +32,7 @@ export default function Projects() {
 
   // Using the custom hook to fetch the data.
   const data = useFetch("https://arezef.deta.dev/api/projects");
+
   console.log(data);
 
   return (
