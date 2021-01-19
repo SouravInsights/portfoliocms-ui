@@ -84,7 +84,7 @@ const Table = ({
                   {console.log(i)}
                   {console.log("I'm trying to console the projectId.title")}
                   {console.log(column)}
-                  {item[headers[i].title]}
+                  {item[headers[i].id]}
                 </td>
               ))}
 
