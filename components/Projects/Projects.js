@@ -1,6 +1,7 @@
 import React from "react";
 
 import { PageContainer, PageContent, Table } from "../Layout";
+import useFetch from "../../hooks/useFetch";
 
 export default function Projects() {
   let headers = [
@@ -9,20 +10,39 @@ export default function Projects() {
       title: "ID",
     },
     {
-      id: "name",
-      title: "Name",
+      id: "title",
+      title: "Title",
     },
     {
       id: "stars",
       title: "Stars",
     },
     {
-      id: "github_repo",
-      title: "GitHub Repo",
+      id: "category",
+      title: "Category",
     },
   ];
 
-  let projects = [
+  // Using the custom hook to fetch the data.
+  const data = useFetch("https://arezef.deta.dev/api/projects");
+  console.log(data);
+
+  return (
+    <PageContainer isFixedNav>
+      <PageContent
+        title="Projects"
+        label="Add Project"
+        onClick={() => {
+          alert("ok");
+        }}
+      >
+        <Table selectable selected={[2, 3]} headers={headers} items={data} />
+      </PageContent>
+    </PageContainer>
+  );
+}
+
+/*   let projects = [
     {
       id: 1,
       name: "Scrumbble",
@@ -42,22 +62,4 @@ export default function Projects() {
       github_repo: "https://github.com/",
     },
   ];
-  return (
-    <PageContainer isFixedNav>
-      <PageContent
-        title="Projects"
-        label="Add Project"
-        onClick={() => {
-          alert("ok");
-        }}
-      >
-        <Table
-          selectable
-          selected={[2, 3]}
-          headers={headers}
-          items={projects}
-        />
-      </PageContent>
-    </PageContainer>
-  );
-}
+ */

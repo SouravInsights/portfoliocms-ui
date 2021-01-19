@@ -14,7 +14,6 @@ import {
 } from "@chakra-ui/react";
 
 import "./Table.module.scss";
-
 import { FaEllipsisV } from "react-icons/fa";
 
 const Table = ({
