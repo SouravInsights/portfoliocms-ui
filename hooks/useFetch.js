@@ -1,17 +1,20 @@
-// useFetch.js
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// Create a new function useFetch and pass the url prop
 function useFetch(url) {
-  const [data, setData] = useState();
+  const [data, setData] = useState({
+    id: 1,
+    title: "Dummy Title",
+    stars: 34,
+    category: "Web Application",
+  });
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(url);
       setData(result.data);
     };
     fetchData();
-  }, [url]); // In the array, pass the url
+  }, [url]);
   return data;
 }
 
