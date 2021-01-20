@@ -22,6 +22,14 @@ export default function Projects() {
       id: "category",
       title: "Category",
     },
+    {
+      id: "created_at",
+      title: "Created At",
+    },
+    {
+      id: "updated_at",
+      title: "Updated At",
+    },
   ];
 
   const {
