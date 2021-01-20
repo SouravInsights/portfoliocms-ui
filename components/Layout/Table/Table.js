@@ -86,7 +86,7 @@ const ProjectTable = ({
 
               {console.log("Here's what inside item:", item)}
 
-              {Object.keys(item).map((column, i) => (
+              {Object.keys(headers).map((column, i) => (
                 <Td key={i} data-column={headers[i]}>
                   {console.log("Here's what inside i:", i)}
 
